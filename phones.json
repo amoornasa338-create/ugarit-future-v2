@@ -1,0 +1,78 @@
+{
+  "phones": [
+    {
+      "id": 1,
+      "name": "iPhone 16 Pro Max",
+      "price": 1199,
+      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg",
+      "release": "2024",
+      "processor": {
+        "name": "Apple A18 Pro",
+        "manufacturing": "3nm",
+        "gaming": "جيد جدًا",
+        "cooling": "تبريد سلبي محسّن",
+        "usage_type": "استخدام يومي"
+      },
+      "specs": {
+        "الشاشة": "6.9 LTPO Super Retina XDR 120Hz",
+        "الذاكرة": "8GB RAM",
+        "التخزين": "256 / 512 / 1TB",
+        "الكاميرا": "48MP + 12MP + 48MP",
+        "البطارية": "4685 mAh",
+        "النظام": "iOS 18"
+      },
+      "colors": ["Black Titanium", "Natural Titanium"],
+      "pros": [
+        "أداء ممتاز في الاستخدام اليومي",
+        "شاشة من الأفضل في السوق",
+        "دعم تحديثات طويل"
+      ],
+      "cons": [
+        "سعر مرتفع",
+        "ليس مخصصًا للألعاب الثقيلة"
+      ],
+      "usage": {
+        "gaming": "جيد",
+        "daily": "ممتاز",
+        "camera": "ممتاز"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Samsung Galaxy S24 Ultra",
+      "price": 1099,
+      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-ultra-5g-sm-s928.jpg",
+      "release": "2024",
+      "processor": {
+        "name": "Snapdragon 8 Gen 3",
+        "manufacturing": "4nm",
+        "gaming": "ممتاز",
+        "cooling": "Vapor Chamber متقدم",
+        "usage_type": "ألعاب"
+      },
+      "specs": {
+        "الشاشة": "6.8 Dynamic AMOLED 2X 120Hz",
+        "الذاكرة": "12GB RAM",
+        "التخزين": "256 / 512 / 1TB",
+        "الكاميرا": "200MP + 50MP + 10MP",
+        "البطارية": "5000 mAh",
+        "النظام": "Android 14"
+      },
+      "colors": ["Titanium Black", "Titanium Gray"],
+      "pros": [
+        "أداء ألعاب قوي جدًا",
+        "كاميرا احترافية",
+        "شاشة ممتازة تحت الشمس"
+      ],
+      "cons": [
+        "حجم كبير",
+        "وزن ثقيل نسبيًا"
+      ],
+      "usage": {
+        "gaming": "ممتاز",
+        "daily": "ممتاز",
+        "camera": "ممتاز جدًا"
+      }
+    }
+  ]
+}
