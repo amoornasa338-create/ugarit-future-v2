@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ugarit Future</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  color: white;
+}
+header {
+  text-align: center;
+  padding: 30px 15px;
+}
+header h1 {
+  margin: 10px 0;
+  font-size: 34px;
+}
+header p {
+  opacity: 0.9;
+}
+.container {
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: #ffffff;
+  color: #000;
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);
+}
+.card img {
+  max-width: 180px;
+  height: auto;
+}
+.card h3 {
+  margin: 15px 0 5px;
+}
+.price {
+  color: #0d47a1;
+  font-weight: bold;
+}
+.btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #0d47a1;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.8;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📱 Ugarit Future</h1>
+  <p>دليل الهواتف الذكية – مواصفات • صور • مقارنة</p>
+</header>
+
+<div class="container" id="phones"></div>
+
+<footer>
+  © 2026 Ugarit Future
+</footer>
+
+<script>
+fetch('phones.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('phones');
+
+    data.phones.forEach(phone => {
+      container.innerHTML += `
+        <div class="card">
+          <img src="${phone.image}">
+          <h3>${phone.name}</h3>
+          <div class="price">${phone.price} $</div>
+          <a class="btn" href="phone.html?id=${phone.id}">عرض المواصفات</a>
+        </div>
+      `;
+    });
+  });
+</script>
+
+</body>
+</html>
