@@ -107,28 +107,34 @@ li {
 </div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const phoneId = params.get('id');
+const id = new URLSearchParams(window.location.search).get("id");
 
-fetch('phones.json')
-.then(res => res.json())
-.then(data => {
-  const phone = data.phones.find(p => p.id == phoneId);
-  if (!phone) return;
+fetch("phones.json")
+  .then(response => response.json())
+  .then(data => {
+    const phone = data.phones.find(p => String(p.id) === id);
+    if (!phone) {
+      document.getElementById("phoneName").innerText = "الهاتف غير موجود";
+      return;
+    }
 
-  document.getElementById('phoneName').innerText = phone.name;
-  document.getElementById('phoneImage').src = phone.image;
-  document.getElementById('phonePrice').innerText = "السعر: " + phone.price + "$";
+    document.getElementById("phoneName").innerText = phone.name;
+    document.getElementById("phoneImage").src = phone.image;
+    document.getElementById("phonePrice").innerText = "السعر التقريبي: " + phone.price + "$";
 
-  const badge = document.getElementById('usageBadge');
-  badge.innerText = phone.usage || "استخدام يومي";
-  badge.className += phone.usage?.includes("ألعاب") ? " game" : " normal";
+    const specsList = document.getElementById("specs");
+    specsList.innerHTML = "";
 
-  const specs = document.getElementById('specs');
-  for (let key in phone.specs) {
-    specs.innerHTML += `<li><strong>${key}:</strong> ${phone.specs[key]}</li>`;
-  }
-});
+    Object.entries(phone.specs).forEach(([key, value]) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${key}:</strong> ${value}`;
+      specsList.appendChild(li);
+    });
+  })
+  .catch(err => {
+    document.getElementById("phoneName").innerText = "خطأ في تحميل البيانات";
+    console.error(err);
+  });
 </script>
 
 </body>
