@@ -3,76 +3,117 @@
     {
       "id": 1,
       "name": "iPhone 16 Pro Max",
-      "price": 1199,
+      "brand": "Apple",
+      "category": "Flagship",
+      "release_year": 2024,
+      "price_usd": 1199,
       "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg",
-      "release": "2024",
-      "processor": {
-        "name": "Apple A18 Pro",
-        "manufacturing": "3nm",
-        "gaming": "جيد جدًا",
-        "cooling": "تبريد سلبي محسّن",
-        "usage_type": "استخدام يومي"
+
+      "general": {
+        "dimensions": "163.0 × 77.6 × 8.3 mm",
+        "weight": "227 g",
+        "build": "Glass front & back (Corning), Titanium frame",
+        "sim": "Dual SIM (Nano-SIM + eSIM)",
+        "water_resistance": "IP68 (6m for 30 min)"
       },
-      "specs": {
-        "الشاشة": "6.9 LTPO Super Retina XDR 120Hz",
-        "الذاكرة": "8GB RAM",
-        "التخزين": "256 / 512 / 1TB",
-        "الكاميرا": "48MP + 12MP + 48MP",
-        "البطارية": "4685 mAh",
-        "النظام": "iOS 18"
+
+      "display": {
+        "type": "LTPO Super Retina XDR OLED",
+        "size": "6.9 inches",
+        "resolution": "2868 × 1320 pixels",
+        "aspect_ratio": "19.5:9",
+        "refresh_rate": "120Hz ProMotion",
+        "brightness": "2000 nits (HBM)",
+        "protection": "Ceramic Shield Glass"
       },
-      "colors": ["Black Titanium", "Natural Titanium"],
+
+      "performance": {
+        "chipset": "Apple A18 Pro",
+        "manufacturing_process": "3nm",
+        "cpu": "Hexa-core (2× performance + 4× efficiency)",
+        "gpu": "Apple GPU (6-core)",
+        "ai_engine": "Neural Engine 16-core",
+        "gaming_performance": "Good (not gaming-focused)",
+        "cooling": "Improved passive cooling"
+      },
+
+      "memory": {
+        "ram": "8GB",
+        "storage_options": ["256GB", "512GB", "1TB"],
+        "expandable": false
+      },
+
+      "camera": {
+        "rear": {
+          "main": "48 MP, f/1.8, OIS",
+          "telephoto": "12 MP, 5x optical zoom",
+          "ultrawide": "48 MP",
+          "features": [
+            "Sensor-shift OIS",
+            "HDR",
+            "Night Mode",
+            "ProRAW"
+          ]
+        },
+        "front": {
+          "resolution": "12 MP",
+          "features": ["HDR", "Face ID", "4K Video"]
+        },
+        "video": {
+          "rear_video": "4K@60fps, ProRes",
+          "front_video": "4K@60fps"
+        }
+      },
+
+      "battery": {
+        "capacity": "4685 mAh",
+        "charging": {
+          "wired": "27W",
+          "wireless": "MagSafe 15W",
+          "reverse": false
+        },
+        "endurance_rating": "Excellent for daily use"
+      },
+
+      "connectivity": {
+        "network": ["5G", "LTE"],
+        "wifi": "Wi-Fi 6E",
+        "bluetooth": "5.3",
+        "gps": ["GPS", "GLONASS", "GALILEO"],
+        "usb": "USB-C 3.0"
+      },
+
+      "audio": {
+        "speakers": "Stereo speakers",
+        "jack": false,
+        "features": ["Spatial Audio", "Dolby Atmos"]
+      },
+
+      "software": {
+        "os": "iOS 18",
+        "update_policy": "6+ years of updates",
+        "ai_support": "Apple Intelligence (partial)"
+      },
+
+      "usage_scores": {
+        "daily_use": 9.5,
+        "gaming": 7.5,
+        "camera": 9.8,
+        "battery": 9.0
+      },
+
       "pros": [
-        "أداء ممتاز في الاستخدام اليومي",
-        "شاشة من الأفضل في السوق",
-        "دعم تحديثات طويل"
+        "Exceptional display quality",
+        "Very strong camera system",
+        "Long software support",
+        "Premium build quality"
       ],
+
       "cons": [
-        "سعر مرتفع",
-        "ليس مخصصًا للألعاب الثقيلة"
-      ],
-      "usage": {
-        "gaming": "جيد",
-        "daily": "ممتاز",
-        "camera": "ممتاز"
-      }
-    },
-    {
-      "id": 2,
-      "name": "Samsung Galaxy S24 Ultra",
-      "price": 1099,
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-ultra-5g-sm-s928.jpg",
-      "release": "2024",
-      "processor": {
-        "name": "Snapdragon 8 Gen 3",
-        "manufacturing": "4nm",
-        "gaming": "ممتاز",
-        "cooling": "Vapor Chamber متقدم",
-        "usage_type": "ألعاب"
-      },
-      "specs": {
-        "الشاشة": "6.8 Dynamic AMOLED 2X 120Hz",
-        "الذاكرة": "12GB RAM",
-        "التخزين": "256 / 512 / 1TB",
-        "الكاميرا": "200MP + 50MP + 10MP",
-        "البطارية": "5000 mAh",
-        "النظام": "Android 14"
-      },
-      "colors": ["Titanium Black", "Titanium Gray"],
-      "pros": [
-        "أداء ألعاب قوي جدًا",
-        "كاميرا احترافية",
-        "شاشة ممتازة تحت الشمس"
-      ],
-      "cons": [
-        "حجم كبير",
-        "وزن ثقيل نسبيًا"
-      ],
-      "usage": {
-        "gaming": "ممتاز",
-        "daily": "ممتاز",
-        "camera": "ممتاز جدًا"
-      }
+        "Very expensive",
+        "Not ideal for heavy gaming",
+        "No expandable storage"
+      ]
     }
   ]
 }
