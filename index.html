@@ -1,120 +1,75 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ugarit Future | دليل الهواتف</title>
-
-<style>
-:root {
-  --gold:#d4af37;
-  --silver:#c0c0c0;
-  --dark:#05050a;
-  --card:#111;
-}
-body {
-  margin:0;
-  background:var(--dark);
-  font-family:Arial, sans-serif;
-  color:#f0f0f0;
-}
-header {
-  text-align:center;
-  padding:20px;
-  border-bottom:2px solid var(--gold);
-}
-header h1 {
-  margin:0;
-  background:linear-gradient(to right,var(--gold),var(--silver));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-#phones {
-  padding:20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-  gap:15px;
-}
-.phone-card {
-  background:var(--card);
-  border:1px solid rgba(212,175,55,.3);
-  border-radius:18px;
-  padding:12px;
-  text-align:center;
-  cursor:pointer;
-  transition:.3s;
-}
-.phone-card:hover {
-  transform:translateY(-5px);
-  border-color:var(--gold);
-}
-.phone-card img {
-  width:100%;
-  height:150px;
-  object-fit:contain;
-  background:#fff;
-  border-radius:12px;
-}
-.phone-name {
-  margin-top:10px;
-  color:var(--gold);
-  font-weight:bold;
-  font-size:15px;
-}
-.phone-price {
-  color:var(--silver);
-  margin-top:5px;
-}
-.loading {
-  text-align:center;
-  padding:40px;
-  opacity:.7;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Ugarit Future</title>
+  <style>
+    body { font-family: Arial; background:#f5f5f5; padding:20px }
+    .controls { margin-bottom:20px }
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:20px;
+    }
+    .card {
+      background:white;
+      padding:15px;
+      border-radius:10px;
+      text-align:center;
+    }
+    img { width:100%; max-height:200px; object-fit:contain }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Ugarit Future</h1>
-  <p>دليل الهواتف الذكية</p>
-</header>
+<h1>📱 Ugarit Future</h1>
 
-<div id="phones">
-  <div class="loading">جاري تحميل الهواتف...</div>
+<div class="controls">
+  💰 ميزانيتك:
+  <input id="priceInput" type="number" placeholder="مثال: 1000">
+  <button onclick="filterByPrice()">بحث</button>
+
+  🎤
+  <button onclick="voiceSearch()">بحث صوتي</button>
 </div>
 
+<div id="phones" class="grid"></div>
+
 <script>
+let phonesData = [];
+
 fetch("phones.json")
-  .then(response => {
-    if (!response.ok) throw new Error("phones.json not found");
-    return response.json();
-  })
-  .then(data => {
-    const container = document.getElementById("phones");
-    container.innerHTML = "";
-
-    data.phones.forEach(phone => {
-      const card = document.createElement("div");
-      card.className = "phone-card";
-      card.onclick = () => {
-        window.location.href = `phone.html?id=${phone.id}`;
-      };
-
-      card.innerHTML = `
-        <img src="${phone.image}" alt="${phone.name}">
-        <div class="phone-name">${phone.name}</div>
-        <div class="phone-price">$${phone.price}</div>
-      `;
-
-      container.appendChild(card);
-    });
-  })
-  .catch(err => {
-    document.getElementById("phones").innerHTML =
-      "<div class='loading'>فشل تحميل البيانات</div>";
-    console.error(err);
+  .then(r => r.json())
+  .then(d => {
+    phonesData = d.phones;
+    render(phonesData);
   });
+
+function render(list){
+  document.getElementById("phones").innerHTML = list.map(p => `
+    <div class="card">
+      <img src="${p.image}">
+      <h3>${p.name}</h3>
+      <p>$${p.price_usd}</p>
+      <a href="phone.html?id=${p.id}">عرض التفاصيل</a>
+    </div>
+  `).join("");
+}
+
+function filterByPrice(){
+  const val = document.getElementById("priceInput").value;
+  render(phonesData.filter(p => p.price_usd <= val));
+}
+
+function voiceSearch(){
+  const rec = new webkitSpeechRecognition();
+  rec.lang = "ar";
+  rec.onresult = e => {
+    const q = e.results[0][0].transcript.toLowerCase();
+    render(phonesData.filter(p => p.name.toLowerCase().includes(q)));
+  };
+  rec.start();
+}
 </script>
 
 </body>
